@@ -7,7 +7,22 @@
 * [Assumptions](#assumptions)
 
 ## General info
-This project is simple Lorem ipsum dolor generator.
+```
+This project is for new technology that is destined to be a disruptive force in the field of transportation 
+which is the drone.Just as the mobile phone allowed developing countries to leapfrog older technologies for 
+personal communication, the drone has the potential to leapfrog traditional transportation infrastructure.
+Useful drone functions include delivery of small items that are (urgently) needed in locations with difficult
+access.This one will be used to transport medication.
+The service should allow:
+- registering a drone;
+- loading a drone with medication items;
+- checking loaded medication items for a given drone; 
+- checking available drones for loading;
+- check drone battery level for a given drone;
+- Prevent the drone from being loaded with more weight that it can carry;
+- Prevent the drone from being in LOADING state if the battery level is **below 25%**;
+- Introduce a periodic task to check drones battery levels and create history/audit event log for this.
+```
 
 ## PreRequisites
 ```
@@ -61,7 +76,21 @@ The following assumptions were made made during development
           >> Middleweight:151-250
           >> Cruiserweight: 251-399
           >> Heavyweight: 400-500
-* The Medication Code is System Generated. i.e Drone SerialNumber(First 4 strings)+Medication Name(First 4 Strings)+ 5 length Random Generated Numbers.
+* The Medication Code is System Generated. 
+i.e Drone SerialNumber(First 4 strings)+Medication Name(First 4 Strings)+ 5 length Random Generated Numbers.
 * The drone that will be Loaded is one with >= 25% battery Level and also is on IDLE State
 * No drone will be loaded with medication that is greater than its maximum weight it can carry.
+Maximum weight of the drone is detrmined by the model.
+```
+
+## Audit Event
+```
+The drones Battery Level and State will be tracked by the system after every set time duration which this is done 
+through cron expression on the application.properties file.So any duration can be set for the tracking.The 
+Result will be written in a log file under the logs folder in file naming format of MS-yyyyMMddhhmmss-logs.txt  
+The data in the file will be recorded in the format below.
+   SERIAL NUMBER              BATTERY-LEVEL            STATE
+   DRONE12345-MUSALA1           99%                      IDLE
+   DRONE12345-MUSALA2           65%                      LOADED
+   DRONE12345-MUSALA3           45%                      LOADING
 ```
