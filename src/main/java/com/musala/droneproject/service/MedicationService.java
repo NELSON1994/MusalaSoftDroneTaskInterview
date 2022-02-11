@@ -15,6 +15,8 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.transaction.Transactional;
 import java.util.List;
 
+import static java.util.Objects.nonNull;
+
 @Service
 @AllArgsConstructor
 @Transactional
@@ -29,7 +31,7 @@ public class MedicationService implements MedicationServiceImple {
         GeneralResponseWrapper generalResponseWrapper = new GeneralResponseWrapper();
         try {
             Drone drone = droneService.findDroneByID(drone_id);
-            if (drone != null) {
+            if (nonNull(drone)) {
                 Medication medication = new Medication();
                 Models models = modelsRepository.findByModelName(drone.getModel());
                 if (drone.getBatteryCapacity() >= 25) {
