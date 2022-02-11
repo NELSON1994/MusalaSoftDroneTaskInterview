@@ -41,7 +41,7 @@ public class DroneBatteryLevelTracker {
 
                 (e) -> {
                     try {
-                        fileWriter.append("   " + e.getSerialNumber() + "           " + e.getBatteryCapacity() + "                      " + e.getState());
+                        fileWriter.append("   " + e.getSerialNumber() + "           " + e.getBatteryCapacity() + "%                      " + e.getState());
                         fileWriter.append("\n");
                     } catch (Exception ex) {
                         ex.printStackTrace();
