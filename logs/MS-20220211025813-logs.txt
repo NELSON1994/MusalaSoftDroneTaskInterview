@@ -1,0 +1,12 @@
+   SERIAL NUMBER              BATTERY-LEVEL            STATE
+   DRONE12345-MUSALA1           99                      IDLE
+   DRONE12345-MUSALA2           65                      LOADED
+   DRONE12345-MUSALA3           45                      LOADING
+   DRONE12345-MUSALA4           30                      RETURNING
+   DRONE12345-MUSALA5           60                      DELIVERING
+   DRONE12345-MUSALA6           80                      IDLE
+   DRONE12345-MUSALA7           38                      IDLE
+   DRONE12345-MUSALA8           78                      LOADING
+   DRONE12345-MUSALA9           22                      IDLE
+   DRONE12345-MUSALA10           90                      DELIVERING
+   DRONE12345-MUSALA11           45                      IDLE
