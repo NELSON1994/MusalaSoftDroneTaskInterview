@@ -73,6 +73,7 @@
                 </configuration>
             </plugin>
         </plugins>
+        <finalName>musala-drone:1.0</finalName>
     </build>
 
 </project>
