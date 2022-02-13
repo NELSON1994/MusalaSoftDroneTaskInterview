@@ -6,6 +6,7 @@ import com.musala.droneproject.service.DroneServiceImpleme;
 import com.musala.droneproject.service.MedicationServiceImple;
 import com.musala.droneproject.wrapper.GeneralResponseWrapper;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -50,4 +51,5 @@ public class DispatchController {
         GeneralResponseWrapper generalResponseWrapper=droneServiceImpleme.findDroneBatteryLevel(droneId);
         return ResponseEntity.ok(generalResponseWrapper);
     }
+
 }

@@ -14,6 +14,7 @@ import java.io.Serializable;
 
 @Entity
 @NoArgsConstructor
+@AllArgsConstructor
 @Data
 @ToString
 public class Drone implements Serializable {

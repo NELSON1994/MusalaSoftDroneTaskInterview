@@ -1,6 +1,5 @@
 package com.musala.droneproject.service;
 
-import com.musala.droneproject.dao.MedicationDao;
 import com.musala.droneproject.model.Drone;
 import com.musala.droneproject.model.Medication;
 import com.musala.droneproject.model.Models;
@@ -40,10 +39,14 @@ public class MedicationService implements MedicationServiceImple {
                         medication.setDrone(drone);
                         medication.setMedicationName(medicationName);
                         medication.setWeight(medicationWeight);
-                        medication.setPhoto(file.getBytes());
+                        if(nonNull(file)){
+                            medication.setPhoto(file.getBytes());
+                        }else{
+                            medication.setPhoto(null);
+                        }
                         medication.setCode(code);
                         medicationRepository.save(medication);
-                        generalResponseWrapper.setResponseCode(HttpStatus.OK.value());
+                        generalResponseWrapper.setResponseCode(HttpStatus.CREATED.value());
                         generalResponseWrapper.setMessage("Drone loaded Successfully");
                         generalResponseWrapper.setData(medication);
                     } else {
@@ -80,7 +83,7 @@ public class MedicationService implements MedicationServiceImple {
                 generalResponseWrapper.setData(medicationList);
             } else {
                 generalResponseWrapper.setResponseCode(HttpStatus.NOT_FOUND.value());
-                generalResponseWrapper.setMessage("Drone with ID : " + droneId + "Not Found");
+                generalResponseWrapper.setMessage("Drone with ID : " + droneId + " Not Found");
             }
 
         } catch (Exception e) {
@@ -91,7 +94,7 @@ public class MedicationService implements MedicationServiceImple {
         return generalResponseWrapper;
     }
 
-    private String generateCode(String medicationName, String droneSerialNumber) {
+    public String generateCode(String medicationName, String droneSerialNumber) {
         int number = (int) (Math.random() * 10000);
         String generatedCode = droneSerialNumber.substring(0, 5) + medicationName.substring(0, 5) + number;
         return generatedCode.toUpperCase();
