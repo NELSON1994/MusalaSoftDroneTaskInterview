@@ -1,0 +1,144 @@
+
+=====================================REGISTER DRONE
+URL: localhost:8787/musala/drone
+METHOD: POST
+REQUEST PAYLOAD:
+{
+    "serialNumber": "MUSALAdro7777770",
+    "weight" : 399,
+    "batteryCapacity": 25,
+    "state" : "LOADING"
+}
+
+RESPONSE PAYLOAD:
+{
+    "responseCode": 201,
+    "message": "Drone Registered Successfully",
+    "date": "2022-02-09T14:19:46.102+00:00",
+    "data": {
+        "id": 2,
+        "serialNumber": "MUSALAdro7777770",
+        "model": "Cruiserweight",
+        "weight": 399,
+        "batteryCapaity": 25,
+        "state": "LOADING"
+    }
+
+	=============Drones on Loading State(   Drones that are on IDLE state and Battery Level is Not less than 25
+	URL: localhost:8787/musala/drone/loading
+	METHOD: GET
+	Response PayLoad:;{
+    "responseCode": 200,
+    "message": "Drones fetched Successfully",
+    "date": "2022-02-10T07:28:50.551+00:00",
+    "data": [
+        {
+            "id": 11,
+            "serialNumber": "DRONE12345-MUSALA1",
+            "model": "Lightweight",
+            "weight": 135,
+            "batteryCapacity": 99,
+            "state": "IDLE"
+        },
+        {
+            "id": 16,
+            "serialNumber": "DRONE12345-MUSALA6",
+            "model": "Middleweight",
+            "weight": 190,
+            "batteryCapacity": 80,
+            "state": "IDLE"
+        },
+        {
+            "id": 17,
+            "serialNumber": "DRONE12345-MUSALA7",
+            "model": "Cruiserweight",
+            "weight": 270,
+            "batteryCapacity": 38,
+            "state": "IDLE"
+        },
+        {
+            "id": 21,
+            "serialNumber": "DRONE12345-MUSALA11",
+            "model": "Middleweight",
+            "weight": 220,
+            "batteryCapacity": 45,
+            "state": "IDLE"
+        }
+    ]
+}
+
+
+=======================loaded medicatio for a given drone
+URL:localhost:8787/musala/drone/medication/{drone_id}        eg localhost:8787/musala/drone/medication/11
+METHOD: GET
+Response Payload:
+    "responseCode": 200,
+    "message": "Medications fetched Successfully",
+    "date": "2022-02-10T07:35:48.129+00:00",
+    "data": [
+        {
+            "id": 1,
+            "medicationName": "MED111111",
+            "weight": 120,
+            "code": "DRONE12MED115644",
+            "photo": null,
+        },
+        {
+            "id": 6,
+            "medicationName": "MED666666",
+            "weight": 148,
+            "code": "DRONE12MED661464",
+            "photo": null,
+        },
+        {
+            "id": 7,
+            "medicationName": "MED777777",
+            "weight": 78,
+            "code": "DRONE12MED777349",
+            "photo": null,
+        }
+    ]
+}
+
+
+=====================BATTERY LEVEL FOR A GIVEN DRONE
+URL: localhost:8787/musala/drone/battery-level/{drone_id}        eg .localhost:8787/musala/drone/batterylevel/11
+METHOD: GET
+RESPONSE PAYLOAD:
+{
+    "responseCode": 200,
+    "message": "Drone Battery Level fetched Successfully",
+    "date": "2022-02-10T07:39:15.327+00:00",
+    "data": {
+        "batteryLevel": "99%"
+    }
+}
+
+============================LOAD DRONE===================================
+URL:localhost:8787/musala/load-drone/11
+METHOD : POST
+Request PayLoad:
+		droneID: PathVariable
+		medicationName:Request Param
+		medicationWeight: Request Param
+		file:Request Param
+RESPONSE PAYLOAD:
+{
+    "responseCode": 200,
+    "message": "Drone loaded Successfully",
+    "date": "2022-02-10T11:57:56.251+00:00",
+    "data": {
+        "id": 11,
+        "medicationName": "MEDFTY789898998",
+        "weight": 135,
+        "code": "DRONMEDF4850",
+		"photo":"ssxlskskskskskksksksksksjsjsjsskksksksssks9ls,sksksskksks090000",
+        "drone": {
+            "id": 11,
+            "serialNumber": "DRONE12345-MUSALA1",
+            "model": "Lightweight",
+            "weight": 135,
+            "batteryCapacity": 99,
+            "state": "IDLE"
+        }
+    }
