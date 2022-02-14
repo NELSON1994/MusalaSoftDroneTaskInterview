@@ -47,7 +47,7 @@ public class DispatchController {
     }
 
     @GetMapping("/drone/battery-level/{droneId}")
-    private ResponseEntity<GeneralResponseWrapper> getDronesForLoading(@Valid @PathVariable Long droneId){
+    private ResponseEntity<GeneralResponseWrapper> getDronesBatteryLevel(@Valid @PathVariable Long droneId){
         GeneralResponseWrapper generalResponseWrapper=droneServiceImpleme.findDroneBatteryLevel(droneId);
         return ResponseEntity.ok(generalResponseWrapper);
     }
